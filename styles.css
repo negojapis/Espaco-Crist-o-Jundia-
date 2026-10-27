@@ -1,0 +1,1679 @@
+/* ==========================================================================
+   IEC • Igreja Espaço Cristão — Identidade & Layout inspirados em Fellowship Church
+   Fontes: Cristal Solid (Display) & RenosRough (Script) + DM Sans (Body)
+   Paleta: Papel Natural / Terracota / Verde Sálvia / Areia Dourada / Ardósia
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Cristal Solid';
+  src: url('assets/fonts/Cristal-Solid.ttf') format('truetype');
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'espiritu-script';
+  src: url('assets/fonts/espiritu-script.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RenosRough';
+  src: url('assets/fonts/RenosRough-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ==========================================================================
+     PALETA OFICIAL DA IDENTIDADE IEC (Igreja Espaço Cristão)
+     Conforme Manual de Identidade Visual da Igreja:
+     - Laranja:                 #E75F00 (RGB: 231, 95, 0)
+     - Azul acinzentado escuro: #819BAC (RGB: 129, 155, 172)
+     - Azul médio:              #98B6CB (RGB: 152, 182, 203)
+     - Azul claro:              #B8DBEF (RGB: 184, 219, 239)
+     - Branco do fundo:         #FFFFFF (RGB: 255, 255, 255)
+     ========================================================================== */
+  --iec-orange: #E75F00;
+  --iec-orange-dark: #cf5400;
+  --iec-orange-deep: #b34700;
+  --iec-orange-light: #fff3eb;
+  --iec-orange-glow: rgba(231, 95, 0, 0.28);
+
+  --iec-blue-dark: #819BAC;
+  --iec-blue-darker: #526c7e;
+  --iec-blue-deep: #2c3e4c;
+  --iec-blue-mid: #98B6CB;
+  --iec-blue-light: #B8DBEF;
+  --iec-blue-light-tint: #edf5fa;
+  --iec-blue-ice: #f5f9fc;
+
+  --iec-bg-white: #FFFFFF;
+  --white: #FFFFFF;
+
+  /* Mapeamento Semântico para os componentes do site */
+  --bg-paper: #FFFFFF;
+  --bg-paper-light: #f6fafc;
+  --bg-paper-card: #FFFFFF;
+
+  --primary: var(--iec-orange);
+  --primary-dark: var(--iec-orange-dark);
+  --primary-light: var(--iec-orange-light);
+
+  --terracotta: var(--iec-orange);
+  --terracotta-dark: var(--iec-orange-dark);
+  --terracotta-light: var(--iec-orange-light);
+
+  --sage: var(--iec-blue-dark);
+  --sage-dark: var(--iec-blue-darker);
+  --sage-light: var(--iec-blue-light);
+
+  --sand: var(--iec-blue-mid);
+  --sand-dark: var(--iec-blue-dark);
+  --sand-light: var(--iec-blue-light-tint);
+
+  --slate: var(--iec-blue-dark);
+  --slate-dark: var(--iec-blue-darker);
+  --slate-light: var(--iec-blue-light);
+
+  --charcoal: #1c262e;
+  --charcoal-soft: #2b3944;
+  --muted: #566875;
+  --muted-light: #819BAC;
+  --line: rgba(129, 155, 172, 0.22);
+  --line-light: rgba(255, 255, 255, 0.25);
+
+  --font-heading: 'Cristal Solid', 'DM Sans', sans-serif;
+  --font-script: 'espiritu-script', 'RenosRough', cursive;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --radius-arch: 340px 340px 24px 24px;
+
+  --shadow-sm: 0 4px 12px rgba(28, 38, 46, 0.05);
+  --shadow-md: 0 12px 32px rgba(28, 38, 46, 0.08);
+  --shadow-lg: 0 20px 50px rgba(28, 38, 46, 0.12);
+  --shadow-arch: 0 24px 60px rgba(28, 38, 46, 0.14);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  background-color: var(--bg-paper);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+::selection {
+  background-color: var(--terracotta);
+  color: var(--white);
+}
+
+/* Tipografia de Destaque */
+.script,
+i.script,
+span.script,
+h1 i, h2 i, h3 i, h4 i, h5 i {
+  font-family: var(--font-script);
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.1;
+  display: inline-block;
+}
+
+.heading-solid {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+.wrap {
+  width: min(1560px, 92%);
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Header & Barra de Navegação (Terracota Fellowship)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--terracotta);
+  color: var(--white);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease;
+}
+
+.nav-container {
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--white);
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.brand-link:hover .brand-icon {
+  transform: scale(1.06);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.brand-icon svg,
+.brand-icon img,
+.brand-favicon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.sage-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 6px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.sage-favicon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.brand-subtitle {
+  font-size: 9.5px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-menu a {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--white);
+  position: relative;
+  padding: 6px 0;
+  opacity: 0.92;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--white);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.nav-menu a:hover {
+  opacity: 1;
+}
+
+.nav-menu a:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-header .nav-actions .btn {
+  background-color: var(--white);
+  color: var(--iec-orange);
+  font-weight: 800;
+  border: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.site-header .nav-actions .btn:hover {
+  background-color: var(--charcoal);
+  color: var(--white);
+}
+
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 26px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-sand,
+.hero-actions .btn-sand {
+  background-color: var(--iec-orange);
+  color: var(--white);
+}
+
+.btn-sand:hover,
+.hero-actions .btn-sand:hover {
+  background-color: var(--iec-orange-dark);
+}
+
+.btn-terracotta {
+  background-color: var(--iec-orange);
+  color: var(--white);
+}
+
+.btn-terracotta:hover {
+  background-color: var(--iec-orange-dark);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--charcoal);
+  border: 1.5px solid var(--charcoal);
+  box-shadow: none;
+}
+
+.btn-outline:hover {
+  background-color: var(--charcoal);
+  color: var(--white);
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: var(--white);
+  border: 1.5px solid var(--white);
+  box-shadow: none;
+}
+
+.btn-outline-white:hover {
+  background-color: var(--white);
+  color: var(--charcoal);
+}
+
+.menu-toggle {
+  display: none;
+  color: var(--white);
+  padding: 8px;
+  font-size: 26px;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Hero Section (Layout Fellowship com Arco & Assinatura Jesus)
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  padding: 80px 0 100px;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 24px;
+}
+
+.hero-eyebrow .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--terracotta);
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(52px, 5.5vw, 92px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  margin-bottom: 28px;
+}
+
+.hero-title .script {
+  font-family: var(--font-script);
+  font-size: 1.35em;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--terracotta);
+  margin-left: 8px;
+  display: inline-block;
+  transform: rotate(-3deg);
+}
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--charcoal-soft);
+  max-width: 540px;
+  margin-bottom: 36px;
+}
+
+.hero-desc strong {
+  color: var(--charcoal);
+  font-weight: 700;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Arco da Hero */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-arch-container {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+
+.hero-arch-frame {
+  width: 100%;
+  height: 600px;
+  border-radius: var(--radius-arch);
+  overflow: hidden;
+  box-shadow: var(--shadow-arch);
+  border: 10px solid var(--white);
+  position: relative;
+  background-color: #ddd;
+}
+
+.hero-arch-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.hero-arch-frame:hover img {
+  transform: scale(1.04);
+}
+
+/* Badge de Localização / Somos Um na base do Arco */
+.hero-map-badge {
+  position: absolute;
+  bottom: 28px;
+  left: -24px;
+  background-color: var(--slate);
+  color: var(--white);
+  padding: 18px 26px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 3;
+}
+
+.hero-map-badge svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.hero-map-badge strong {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  display: block;
+  line-height: 1.2;
+}
+
+.hero-map-badge span {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.hero-decor-somos-um {
+  position: absolute;
+  top: -55px;
+  right: -30px;
+  width: 200px;
+  height: auto;
+  z-index: 4;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 24px rgba(231, 95, 0, 0.28));
+  transform: rotate(6deg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-visual:hover .hero-decor-somos-um {
+  transform: rotate(2deg) scale(1.06);
+}
+
+/* ==========================================================================
+   Faixa Deslizante / Marquee Ticker Tape (Somos Um • Espaço Cristão)
+   ========================================================================== */
+.iec-ticker-tape {
+  width: 100%;
+  background-color: var(--iec-orange);
+  color: #000000;
+  border-top: 2.5px solid #000000;
+  border-bottom: 2.5px solid #000000;
+  overflow: hidden;
+  position: relative;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  height: 54px;
+}
+
+.iec-ticker-inner {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: iec-deslizar 30s linear infinite;
+  will-change: transform;
+}
+
+.iec-ticker-tape:hover .iec-ticker-inner,
+.iec-ticker-tape.paused .iec-ticker-inner {
+  animation-play-state: paused;
+}
+
+@keyframes iec-deslizar {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.iec-ticker-content {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-right: 32px;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  user-select: none;
+  line-height: 1;
+}
+
+.ticker-star {
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  color: #000000;
+}
+
+.iec-ticker-pause {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid #000000;
+  background-color: var(--iec-orange);
+  color: #000000;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  z-index: 20;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.iec-ticker-pause:hover {
+  background-color: #000000;
+  color: var(--iec-orange);
+}
+
+/* ==========================================================================
+   Seção Sálvia ("Uma Igreja para Relacionamentos Reais & Encontros com Deus")
+   ========================================================================== */
+.sage-section {
+  background-color: var(--sage);
+  color: var(--white);
+  padding: 100px 0 110px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sage-header {
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto 70px;
+}
+
+.sage-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 6px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.sage-icon img,
+.sage-favicon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.sage-title {
+  font-family: var(--font-heading);
+  font-size: clamp(34px, 4.2vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.sage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 70px;
+}
+
+.sage-image-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-self: end;
+  max-width: 480px;
+  width: 100%;
+}
+
+.sage-image-arch {
+  width: 100%;
+  max-width: 480px;
+  height: 480px;
+  border-radius: var(--radius-arch);
+  overflow: hidden;
+  border: 8px solid rgba(255, 255, 255, 0.25);
+  box-shadow: var(--shadow-lg);
+}
+
+.sage-image-arch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sage-image-caption {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  display: block;
+  margin-top: 18px;
+  text-align: left;
+  font-weight: 700;
+  padding-left: 4px;
+}
+
+.sage-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sage-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: var(--iec-blue-light);
+  display: block;
+}
+
+.sage-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(34px, 3.8vw, 54px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.8px;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.sage-content p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 560px;
+}
+
+.sage-service-box {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-top: 8px;
+  max-width: 560px;
+}
+
+.sage-service-box h3 {
+  font-family: var(--font-body);
+  font-size: clamp(22px, 2.2vw, 29px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.sage-service-box address {
+  font-style: normal;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 22px;
+  display: block;
+}
+
+.sage-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.btn-orange {
+  background-color: var(--iec-orange);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 13.5px;
+  letter-spacing: 0.3px;
+  padding: 14px 26px;
+  border-radius: var(--radius-xs);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-orange:hover {
+  background-color: var(--iec-orange-dark);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(231, 95, 0, 0.4);
+}
+
+.sage-link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.35);
+  text-transform: none;
+  transition: all 0.2s ease;
+}
+
+.sage-link:hover {
+  border-bottom-color: var(--white);
+  color: var(--iec-blue-light);
+}
+
+.sage-link .arrow-orange {
+  color: var(--iec-orange);
+  font-size: 15px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.sage-link:hover .arrow-orange {
+  transform: translateY(3px);
+}
+
+/* ==========================================================================
+   Seção "Por que a IEC" (Why Fellowship Church)
+   ========================================================================== */
+.why-section {
+  padding: 110px 0 120px;
+  position: relative;
+}
+
+.section-head-center {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.section-head-center .script-title {
+  font-family: var(--font-script);
+  font-size: clamp(64px, 7vw, 102px);
+  color: var(--terracotta);
+  line-height: 0.9;
+  margin-bottom: 8px;
+  text-transform: none;
+}
+
+.section-head-center .solid-title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 3.8vw, 56px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.8px;
+  color: var(--charcoal);
+  line-height: 1;
+}
+
+.section-head-center p {
+  color: var(--muted);
+  font-size: 16px;
+  margin-top: 14px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+
+.why-card {
+  background-color: var(--bg-paper-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--line);
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.why-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(129, 155, 172, 0.22);
+  border-color: var(--iec-orange);
+}
+
+.why-card-img {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.why-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.why-card:hover .why-card-img img {
+  transform: scale(1.05);
+}
+
+.why-card-body {
+  padding: 36px 32px 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.why-card-body h3 {
+  font-family: var(--font-script);
+  font-size: 46px;
+  color: var(--charcoal);
+  line-height: 1.1;
+  margin-bottom: 14px;
+  text-transform: none;
+}
+
+.why-card-body p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* ==========================================================================
+   Versículo Bíblico (Salmos 119:105)
+   ========================================================================== */
+.scripture-banner {
+  background-color: var(--bg-paper-light);
+  border-block: 1px solid var(--line);
+  padding: 70px 0;
+  text-align: center;
+  position: relative;
+}
+
+.scripture-container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.scripture-quote {
+  font-family: var(--font-script);
+  font-size: clamp(34px, 4vw, 56px);
+  color: var(--terracotta);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.scripture-ref {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Ministérios (Espaço Kids & Ministério Flow)
+   ========================================================================== */
+.ministries-section {
+  padding: 110px 0 120px;
+  position: relative;
+}
+
+.ministries-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.ministry-card {
+  background-color: var(--bg-paper-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s ease;
+}
+
+.ministry-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.ministry-image-wrap {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ministry-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.ministry-card:hover .ministry-image-wrap img {
+  transform: scale(1.05);
+}
+
+.ministry-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.badge-kids {
+  background-color: var(--terracotta);
+}
+
+.badge-flow {
+  background-color: var(--slate);
+}
+
+.ministry-body {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ministry-body h3 {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: var(--charcoal);
+  margin-bottom: 14px;
+}
+
+.ministry-body p {
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.ministry-body .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* ==========================================================================
+   Equipe Pastoral
+   ========================================================================== */
+.pastors-section {
+  background-color: var(--bg-paper-light);
+  border-block: 1px solid var(--line);
+  padding: 100px 0 110px;
+}
+
+.pastors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+}
+
+.pastor-card {
+  background-color: var(--bg-paper-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 30px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.pastor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--terracotta);
+}
+
+.pastor-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--terracotta-light);
+  color: var(--terracotta);
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  border: 3px solid var(--terracotta);
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(231, 95, 0, 0.15);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.pastor-card:hover .pastor-avatar {
+  transform: scale(1.05);
+  border-color: var(--terracotta);
+}
+
+.pastor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.pastor-role {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.pastor-name {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--charcoal);
+}
+
+.pastor-contact-bar {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.pastor-contact-bar a {
+  color: var(--terracotta);
+  font-weight: 700;
+  margin-left: 8px;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Mensagens & Adoração (YouTube & Spotify)
+   ========================================================================== */
+.media-section {
+  padding: 110px 0 120px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 36px;
+  margin-top: 50px;
+}
+
+.media-card {
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.media-youtube {
+  background: linear-gradient(135deg, var(--charcoal) 0%, var(--iec-blue-deep) 100%);
+}
+
+.media-spotify {
+  background: linear-gradient(135deg, var(--iec-blue-deep) 0%, var(--iec-blue-dark) 100%);
+}
+
+.media-platform-tag {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--iec-blue-light);
+  display: block;
+  margin-bottom: 24px;
+}
+
+.media-title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 3.2vw, 48px);
+  font-weight: 800;
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.media-desc {
+  font-size: 15.5px;
+  opacity: 0.9;
+  max-width: 460px;
+  margin-bottom: 36px;
+}
+
+.play-circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--iec-orange);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 24px var(--iec-orange-glow);
+  transition: transform 0.25s ease;
+}
+
+.media-card:hover .play-circle {
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   Seção de Visita & Contato ("Fique Conectado")
+   ========================================================================== */
+.visit-section {
+  padding: 110px 0 120px;
+  background-color: var(--bg-paper-light);
+  border-top: 1px solid var(--line);
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.visit-info h2 {
+  font-family: var(--font-script);
+  font-size: clamp(52px, 6vw, 84px);
+  color: var(--terracotta);
+  line-height: 0.8;
+  margin-bottom: 6px;
+}
+
+.visit-info h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(34px, 4vw, 56px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.visit-info p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.visit-address-card {
+  background-color: var(--bg-paper-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  margin-bottom: 36px;
+}
+
+.visit-address-card strong {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--charcoal);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.visit-address-card p {
+  margin-bottom: 16px;
+  font-size: 14.5px;
+}
+
+/* Formulário de Visita */
+.visit-box {
+  background-color: var(--bg-paper-card);
+  border-radius: var(--radius-lg);
+  padding: 44px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--line);
+}
+
+.visit-box h4 {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  margin-bottom: 10px;
+}
+
+.visit-box p {
+  color: var(--muted);
+  font-size: 14.5px;
+  margin-bottom: 28px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: var(--radius-xs);
+  border: 1.5px solid var(--line);
+  background-color: var(--bg-paper-light);
+  color: var(--charcoal);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-select:focus {
+  border-color: var(--terracotta);
+}
+
+.visit-box .btn {
+  width: 100%;
+  padding: 16px;
+}
+
+.form-disclaimer {
+  display: block;
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--muted-light);
+  margin-top: 16px;
+}
+
+/* FAQ */
+.faq-list {
+  margin-top: 40px;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+}
+
+.faq-summary {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--charcoal);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-summary::after {
+  content: '+';
+  font-size: 26px;
+  color: var(--terracotta);
+  line-height: 1;
+}
+
+details[open] .faq-summary::after {
+  content: '−';
+}
+
+.faq-item p {
+  font-size: 14.5px;
+  color: var(--muted);
+  margin-top: 12px;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   Footer Signature: Os 3 Blocos de Rodapé Fellowship Church
+   ========================================================================== */
+.footer-banner-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+
+.footer-hero-card {
+  padding: 70px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.footer-hero-card:hover {
+  filter: brightness(1.08);
+}
+
+.card-sage {
+  background-color: var(--iec-blue-dark);
+}
+
+.card-terracotta {
+  background-color: var(--iec-orange);
+}
+
+.card-slate {
+  background-color: var(--iec-blue-mid);
+}
+
+.footer-hero-card .card-kicker {
+  font-family: var(--font-script);
+  font-size: 32px;
+  margin-bottom: 6px;
+  opacity: 0.95;
+}
+
+.footer-hero-card h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(34px, 3.5vw, 54px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.site-bottom-footer {
+  background-color: var(--iec-blue-deep);
+  color: var(--white);
+  padding: 50px 0 40px;
+}
+
+.footer-nav-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-social-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer-social-links a {
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.footer-social-links a:hover {
+  opacity: 1;
+  color: var(--sand);
+}
+
+.footer-copyright {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* Botão Flutuante de WhatsApp */
+.floating-whatsapp {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 58px;
+  height: 58px;
+  background-color: #25D366;
+  color: #ffffff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+  z-index: 99;
+  transition: transform 0.25s ease;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.1);
+}
+
+.floating-whatsapp svg {
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   Responsividade
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .hero-grid,
+  .sage-grid,
+  .visit-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .hero-arch-container,
+  .sage-image-arch {
+    margin: 0 auto;
+  }
+  
+  .why-grid,
+  .pastors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .media-grid,
+  .ministries-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-banner-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .nav-menu {
+    position: fixed;
+    top: 84px;
+    left: 0;
+    width: 100%;
+    background-color: var(--terracotta);
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-150%);
+    transition: transform 0.35s ease;
+    z-index: 99;
+  }
+  
+  .nav-menu.open {
+    transform: translateY(0);
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav-actions .btn {
+    display: none;
+  }
+  
+  .why-grid,
+  .pastors-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-arch-frame {
+    height: 480px;
+  }
+
+  .hero-decor-somos-um {
+    width: 140px;
+    top: -35px;
+    right: -10px;
+  }
+  
+  .sage-image-arch {
+    height: 380px;
+  }
+  
+  .footer-nav-grid,
+  .footer-copyright {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+}
