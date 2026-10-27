@@ -1575,11 +1575,36 @@ details[open] .faq-summary::after {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
   margin-top: 24px;
   font-size: 11px;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 0.75;
+}
+
+.footer-credits {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-transform: none;
+  opacity: 0.9;
+}
+
+.footer-credits .credit-brand {
+  font-family: var(--font-heading);
+  color: var(--white);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: none;
+  transition: color 0.2s ease;
+}
+
+.footer-credits:hover .credit-brand {
+  color: var(--iec-orange);
 }
 
 /* Botão Flutuante de WhatsApp */
