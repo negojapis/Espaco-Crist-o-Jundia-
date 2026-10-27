@@ -102,6 +102,9 @@
   --shadow-md: 0 12px 32px rgba(28, 38, 46, 0.08);
   --shadow-lg: 0 20px 50px rgba(28, 38, 46, 0.12);
   --shadow-arch: 0 24px 60px rgba(28, 38, 46, 0.14);
+
+  --header-height: 84px;
+  --ticker-height: 54px;
 }
 
 /* Reset & Base */
@@ -172,8 +175,14 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 }
 
 .wrap {
-  width: min(1560px, 92%);
+  width: min(1680px, 94%);
   margin: 0 auto;
+}
+
+@media (min-width: 1920px) {
+  .wrap {
+    width: min(1820px, 92%);
+  }
 }
 
 /* ==========================================================================
@@ -190,11 +199,11 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 }
 
 .nav-container {
-  height: 84px;
+  height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: clamp(14px, 1.8vw, 24px);
 }
 
 .brand-link {
@@ -277,19 +286,20 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: clamp(12px, 1.6vw, 30px);
 }
 
 .nav-menu a {
   font-family: var(--font-heading);
-  font-size: 13px;
+  font-size: clamp(11.5px, 0.85vw, 13px);
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   color: var(--white);
   position: relative;
   padding: 6px 0;
   opacity: 0.92;
+  white-space: nowrap;
 }
 
 .nav-menu a::after {
@@ -412,7 +422,11 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
    ========================================================================== */
 .hero-section {
   position: relative;
-  padding: 80px 0 100px;
+  min-height: calc(100svh - var(--header-height) - var(--ticker-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(24px, 3.5vh, 60px) 0;
   overflow: hidden;
 }
 
@@ -420,7 +434,7 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   display: grid;
   grid-template-columns: 1.15fr 0.95fr;
   align-items: center;
-  gap: 60px;
+  gap: clamp(28px, 4vw, 64px);
 }
 
 .hero-content {
@@ -433,12 +447,12 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   align-items: center;
   gap: 8px;
   font-family: var(--font-heading);
-  font-size: 12px;
+  font-size: clamp(10.5px, 0.85vw, 12px);
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--terracotta);
-  margin-bottom: 24px;
+  margin-bottom: clamp(12px, 2vh, 22px);
 }
 
 .hero-eyebrow .dot {
@@ -450,13 +464,13 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 
 .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(52px, 5.5vw, 92px);
+  font-size: clamp(38px, min(4.6vw, 7.6vh), 86px);
   font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -1.5px;
+  line-height: 0.96;
+  letter-spacing: -1.2px;
   text-transform: uppercase;
   color: var(--charcoal);
-  margin-bottom: 28px;
+  margin-bottom: clamp(14px, 2.2vh, 24px);
 }
 
 .hero-title .script {
@@ -472,11 +486,11 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 }
 
 .hero-desc {
-  font-size: 17px;
-  line-height: 1.8;
+  font-size: clamp(14px, 1.05vw, 17px);
+  line-height: 1.7;
   color: var(--charcoal-soft);
-  max-width: 540px;
-  margin-bottom: 36px;
+  max-width: 520px;
+  margin-bottom: clamp(18px, 2.8vh, 32px);
 }
 
 .hero-desc strong {
@@ -487,7 +501,7 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: clamp(10px, 1.2vw, 16px);
   flex-wrap: wrap;
 }
 
@@ -502,16 +516,18 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 .hero-arch-container {
   position: relative;
   width: 100%;
-  max-width: 520px;
+  max-width: min(500px, 42vw);
 }
 
 .hero-arch-frame {
   width: 100%;
-  height: 600px;
-  border-radius: var(--radius-arch);
+  height: clamp(340px, 50vh, 560px);
+  max-height: calc(100svh - var(--header-height) - var(--ticker-height) - 60px);
+  aspect-ratio: 4 / 5;
+  border-radius: clamp(140px, 20vw, 340px) clamp(140px, 20vw, 340px) 24px 24px;
   overflow: hidden;
   box-shadow: var(--shadow-arch);
-  border: 10px solid var(--white);
+  border: clamp(6px, 0.8vw, 10px) solid var(--white);
   position: relative;
   background-color: #ddd;
 }
@@ -530,35 +546,36 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 /* Badge de Localização / Somos Um na base do Arco */
 .hero-map-badge {
   position: absolute;
-  bottom: 28px;
-  left: -24px;
+  bottom: clamp(16px, 2.5vh, 28px);
+  left: -20px;
   background-color: var(--slate);
   color: var(--white);
-  padding: 18px 26px;
+  padding: clamp(12px, 1.4vw, 18px) clamp(16px, 1.8vw, 24px);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   z-index: 3;
 }
 
 .hero-map-badge svg {
-  width: 28px;
-  height: 28px;
+  width: clamp(22px, 2vw, 28px);
+  height: clamp(22px, 2vw, 28px);
   fill: currentColor;
+  flex-shrink: 0;
 }
 
 .hero-map-badge strong {
   font-family: var(--font-heading);
-  font-size: 16px;
+  font-size: clamp(13px, 1.1vw, 16px);
   letter-spacing: 0.5px;
   display: block;
   line-height: 1.2;
 }
 
 .hero-map-badge span {
-  font-size: 11px;
+  font-size: clamp(9.5px, 0.8vw, 11px);
   letter-spacing: 1px;
   text-transform: uppercase;
   opacity: 0.9;
@@ -566,9 +583,9 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 
 .hero-decor-somos-um {
   position: absolute;
-  top: -55px;
-  right: -30px;
-  width: 200px;
+  top: clamp(-45px, -5vh, -30px);
+  right: clamp(-25px, -2vw, -10px);
+  width: clamp(140px, 13vw, 200px);
   height: auto;
   z-index: 4;
   pointer-events: none;
@@ -595,7 +612,7 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   z-index: 15;
   display: flex;
   align-items: center;
-  height: 54px;
+  height: var(--ticker-height);
 }
 
 .iec-ticker-inner {
@@ -623,10 +640,10 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 .iec-ticker-content {
   display: flex;
   align-items: center;
-  gap: 32px;
-  padding-right: 32px;
+  gap: clamp(20px, 2.5vw, 32px);
+  padding-right: clamp(20px, 2.5vw, 32px);
   font-family: var(--font-heading);
-  font-size: 28px;
+  font-size: clamp(20px, 2vw, 28px);
   font-weight: 900;
   letter-spacing: -0.5px;
   text-transform: uppercase;
@@ -1593,87 +1610,350 @@ details[open] .faq-summary::after {
 }
 
 /* ==========================================================================
-   Responsividade
+   Responsividade Multi-Monitor & Viewport-Adaptive
    ========================================================================== */
-@media (max-width: 1080px) {
-  .hero-grid,
-  .sage-grid,
-  .visit-grid {
-    grid-template-columns: 1fr;
-    gap: 50px;
+
+/* Telas de Monitor com Altura Reduzida (Notebooks 1366x768, 1440x900, 1536x864, Janelas Menores) */
+@media (max-height: 760px) and (min-width: 961px) {
+  :root {
+    --header-height: 70px;
+    --ticker-height: 46px;
   }
-  
-  .hero-arch-container,
-  .sage-image-arch {
+
+  .brand-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-title {
+    font-size: 20px;
+  }
+
+  .nav-menu a {
+    font-size: 11.5px;
+  }
+
+  .hero-section {
+    padding: 12px 0 16px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
+
+  .hero-title {
+    font-size: clamp(32px, min(3.8vw, 6.6vh), 62px);
+    margin-bottom: 12px;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    max-width: 480px;
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .hero-actions .btn {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+
+  .hero-arch-container {
+    max-width: min(440px, 38vw);
+  }
+
+  .hero-arch-frame {
+    height: clamp(280px, 45vh, 400px);
+    max-height: calc(100svh - var(--header-height) - var(--ticker-height) - 40px);
+  }
+
+  .hero-map-badge {
+    bottom: 12px;
+    left: -12px;
+    padding: 8px 14px;
+    gap: 8px;
+  }
+
+  .hero-map-badge strong {
+    font-size: 13px;
+  }
+
+  .hero-map-badge span {
+    font-size: 9.5px;
+  }
+
+  .hero-decor-somos-um {
+    width: 140px;
+    top: -30px;
+    right: -15px;
+  }
+}
+
+/* Telas Médias / Laptops / Tablets Paisagem (<= 1100px) */
+@media (max-width: 1100px) {
+  :root {
+    --header-height: 76px;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--terracotta);
+    flex-direction: column;
+    padding: 40px 24px;
+    gap: 22px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+    transform: translateY(-160%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 99;
+    overflow-y: auto;
+  }
+
+  .nav-menu.open {
+    transform: translateY(0);
+  }
+
+  .nav-menu a {
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    padding: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-actions .btn {
+    display: none;
+  }
+
+  .hero-grid {
+    gap: 36px;
+  }
+
+  .pastors-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+}
+
+/* Tablets e Telas Menores (<= 960px) */
+@media (max-width: 960px) {
+  .hero-section {
+    min-height: auto;
+    padding: clamp(36px, 6vh, 60px) 0 clamp(40px, 7vh, 68px);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: left;
+  }
+
+  .hero-content {
+    max-width: 620px;
+  }
+
+  .hero-visual {
+    margin-top: 10px;
+  }
+
+  .hero-arch-container {
+    max-width: min(440px, 92vw);
     margin: 0 auto;
   }
-  
-  .why-grid,
-  .pastors-grid {
-    grid-template-columns: repeat(2, 1fr);
+
+  .hero-arch-frame {
+    height: clamp(340px, 50vw, 480px);
+    max-height: none;
+    border-radius: clamp(160px, 45vw, 260px) clamp(160px, 45vw, 260px) 20px 20px;
   }
-  
+
+  .hero-map-badge {
+    left: 12px;
+    bottom: 16px;
+    padding: 12px 18px;
+  }
+
+  .hero-decor-somos-um {
+    width: clamp(120px, 20vw, 160px);
+    top: -28px;
+    right: 0;
+  }
+
+  .sage-grid,
+  .visit-grid,
   .media-grid,
   .ministries-grid {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
-  
+
+  .sage-image-wrap {
+    justify-self: center;
+    margin: 0 auto;
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pastors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .footer-banner-cards {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 820px) {
-  .nav-menu {
-    position: fixed;
-    top: 84px;
-    left: 0;
-    width: 100%;
-    background-color: var(--terracotta);
-    flex-direction: column;
-    padding: 30px 20px;
-    gap: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transform: translateY(-150%);
-    transition: transform 0.35s ease;
-    z-index: 99;
-  }
-  
-  .nav-menu.open {
-    transform: translateY(0);
-  }
-  
-  .menu-toggle {
-    display: block;
-  }
-  
-  .nav-actions .btn {
-    display: none;
-  }
-  
-  .why-grid,
-  .pastors-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .hero-arch-frame {
-    height: 480px;
+/* Celulares (<= 640px) */
+@media (max-width: 640px) {
+  :root {
+    --header-height: 68px;
+    --ticker-height: 46px;
   }
 
-  .hero-decor-somos-um {
-    width: 140px;
-    top: -35px;
-    right: -10px;
+  .brand-icon {
+    width: 36px;
+    height: 36px;
   }
-  
-  .sage-image-arch {
-    height: 380px;
+
+  .brand-title {
+    font-size: 19px;
   }
-  
+
+  .brand-subtitle {
+    font-size: 8.5px;
+    letter-spacing: 1.4px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    font-size: clamp(30px, 8.5vw, 44px);
+    margin-bottom: 16px;
+  }
+
+  .hero-desc {
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-arch-container {
+    max-width: 100%;
+  }
+
+  .hero-arch-frame {
+    height: 350px;
+    border-width: 6px;
+    border-radius: 170px 170px 16px 16px;
+  }
+
+  .hero-map-badge {
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 14px;
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-card-body {
+    padding: 24px 20px;
+  }
+
+  .ministry-image-wrap {
+    height: 240px;
+  }
+
+  .ministry-body {
+    padding: 24px 20px;
+  }
+
+  .pastors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .pastor-card {
+    padding: 20px 12px;
+  }
+
+  .pastor-avatar {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 12px;
+  }
+
+  .pastor-name {
+    font-size: 18px;
+  }
+
+  .pastor-role {
+    font-size: 10px;
+  }
+
+  .media-card {
+    padding: 28px 20px;
+    min-height: 320px;
+  }
+
+  .visit-box {
+    padding: 24px 20px;
+  }
+
+  .footer-hero-card {
+    padding: 44px 20px;
+  }
+
   .footer-nav-grid,
   .footer-copyright {
     flex-direction: column;
     text-align: center;
     gap: 16px;
+  }
+
+  .floating-whatsapp {
+    width: 50px;
+    height: 50px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .floating-whatsapp svg {
+    width: 26px;
+    height: 26px;
   }
 }
