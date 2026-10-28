@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,10 +11,13 @@
   <link rel="apple-touch-icon" href="assets/Favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://use.typekit.net/lhw4yfx.css">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
   <!-- ==========================================================================
@@ -23,7 +27,8 @@
     <div class="wrap nav-container">
       <a href="#inicio" class="brand-link" aria-label="Igreja Espaço Cristão, início">
         <div class="brand-icon">
-          <img src="assets/Favicon.png" alt="IEC • Igreja Espaço Cristão" width="36" height="36" class="brand-favicon-img">
+          <img src="assets/Favicon.png" alt="IEC • Igreja Espaço Cristão" width="48" height="48"
+            class="brand-favicon-img">
         </div>
         <div class="brand-text">
           <span class="brand-title">IEC.</span>
@@ -42,7 +47,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="#visite" class="btn btn-sand">Sua primeira visita ↗</a>
+        <a href="#visite" class="btn btn-sand">Sua primeira visita</a>
         <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu">☰</button>
       </div>
     </div>
@@ -55,21 +60,19 @@
     <section class="hero-section" id="inicio">
       <div class="wrap hero-grid">
         <div class="hero-content">
-          <div class="hero-eyebrow">
-            <span class="dot"></span>
-            UMA IGREJA EM CÉLULAS • JUNDIAÍ, SP
-          </div>
+          <div class="hero-eyebrow">UMA IGREJA EM CÉLULAS • JUNDIAÍ, SP</div>
           <h1 class="hero-title">
             MUITAS HISTÓRIAS.<br>
             UMA SÓ FÉ EM <i class="script">Jesus</i>
           </h1>
           <p class="hero-desc">
-            Na <strong>Igreja Espaço Cristão</strong>, abrimos espaço para que cada pessoa seja acolhida como é. 
+            Na <strong>Igreja Espaço Cristão</strong>, abrimos espaço para que cada pessoa seja acolhida como é.
             Somos uma família feita de encontros reais, onde aprendemos a amar, discipular e servir juntos.
           </p>
           <div class="hero-actions">
-            <a href="#visite" class="btn btn-sand">Quero conhecer a IEC ↗</a>
-            <a href="https://www.youtube.com/@iecjundiai" target="_blank" rel="noopener" class="btn btn-outline">▶ Assistir Mensagens</a>
+            <a href="#visite" class="btn btn-sand">Quero conhecer a IEC</a>
+            <a href="https://www.youtube.com/@iecjundiai" target="_blank" rel="noopener" class="btn btn-outline">▶
+              Assistir Mensagens</a>
           </div>
         </div>
 
@@ -77,11 +80,24 @@
           <img src="assets/somos-um-manuscrito.png" alt="Somos Um!" class="hero-decor-somos-um">
           <div class="hero-arch-container">
             <div class="hero-arch-frame">
-              <img src="assets/landscape.jpg" alt="Comunidade IEC reunida aos pés da Serra do Japi, Jundiaí">
+              <video id="heroVideo" class="hero-arch-video" autoplay loop muted playsinline poster="assets/video-poster.jpg" preload="auto" title="Vídeo de celebração e comunhão na Igreja Espaço Cristão">
+                <source src="assets/Video%20Igreja.mp4" type="video/mp4">
+                <source src="assets/Video Igreja.mp4" type="video/mp4">
+                Seu navegador não suporta a reprodução deste vídeo.
+              </video>
+              <button type="button" class="hero-video-audio-btn" id="heroVideoAudioBtn" aria-label="Ativar som do vídeo" title="Ativar som do vídeo">
+                <span class="hero-audio-icon" id="heroAudioIcon">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                  </svg>
+                </span>
+                <span class="hero-audio-text" id="heroAudioText">Ativar Som</span>
+              </button>
             </div>
             <div class="hero-map-badge">
               <svg viewBox="0 0 24 24">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
               </svg>
               <div>
                 <strong>JUNDIAÍ, SP</strong>
@@ -135,7 +151,8 @@
           <span class="ticker-star">✦</span>
         </div>
       </div>
-      <button class="iec-ticker-pause" id="tickerPauseBtn" aria-label="Pausar animação" title="Pausar ou reproduzir animação">
+      <button class="iec-ticker-pause" id="tickerPauseBtn" aria-label="Pausar animação"
+        title="Pausar ou reproduzir animação">
         <span class="pause-icon" id="tickerPauseIcon">❚❚</span>
       </button>
     </div>
@@ -164,17 +181,19 @@
             <span class="sage-eyebrow">DISCIPULANDO E SERVINDO COMO JESUS</span>
             <h3 class="sage-subtitle">Muitas histórias.<br>Uma só família.</h3>
             <p>
-              A Igreja Espaço Cristão é uma igreja em células em Jundiaí. Nossa identidade se expressa em um propósito: discipular e servir como Jesus.
+              A Igreja Espaço Cristão é uma igreja em células em Jundiaí. Nossa identidade se expressa em um propósito:
+              discipular e servir como Jesus.
             </p>
             <p>
-              Queremos ser um espaço de comunhão, cuidado e crescimento na vida com Cristo. Nos cultos e na vida em comunidade, há espaço para conhecer, aprender e compartilhar a fé.
+              Queremos ser um espaço de comunhão, cuidado e crescimento na vida com Cristo. Nos cultos e na vida em
+              comunidade, há espaço para conhecer, aprender e compartilhar a fé.
             </p>
 
             <div class="sage-service-box">
               <h3>Esperamos você aos domingos,<br>às 9h30 e às 19h.</h3>
               <address>Rua Moreira César, 208 • Vila Arens, Jundiaí</address>
               <div class="sage-actions">
-                <a href="#visite" class="btn btn-orange">Planeje sua visita ↗</a>
+                <a href="#visite" class="btn btn-orange">Planeje sua visita</a>
                 <a href="#pastores" class="sage-link">Nossa equipe <span class="arrow-orange">↓</span></a>
               </div>
             </div>
@@ -203,8 +222,12 @@
             <div class="why-card-body">
               <h3><i class="script">Sem Julgamento</i></h3>
               <p>
-                Não se preocupe com o "jeito certo" de chegar à igreja. Puxe uma cadeira, tome um café e caminhe conosco sendo você mesmo. Aqui há lugar para sua história.
+                Você não precisa fingir ser perfeito para estar aqui. A igreja não é um tribunal para acusar, mas uma família que acolhe e restaura. Não importa o seu passado, em Jesus você encontra aceitação, graça e amor.
               </p>
+              <div class="why-card-verse">
+                <blockquote>“Deus não enviou o seu Filho ao mundo para condenar o mundo, mas para que o mundo fosse salvo por ele.”</blockquote>
+                <cite>João 3:17</cite>
+              </div>
             </div>
           </div>
 
@@ -216,8 +239,12 @@
             <div class="why-card-body">
               <h3><i class="script">Jesus no Centro</i></h3>
               <p>
-                A fé não é apenas para o domingo de manhã — ela é prática, viva e diária. Aprendemos com Jesus a amar a família, liderar com humildade e servir nossa comunidade.
+                A nossa fé não é apenas para o domingo de manhã, ela é prática, viva e diária. Aprendemos com Jesus a amar a família, liderar com humildade e servir a nossa comunidade com compaixão.
               </p>
+              <div class="why-card-verse">
+                <blockquote>“Fixando os olhos em Jesus, autor e consumador da nossa fé.”</blockquote>
+                <cite>Hebreus 12:2</cite>
+              </div>
             </div>
           </div>
 
@@ -229,8 +256,12 @@
             <div class="why-card-body">
               <h3><i class="script">Amor por Jundiaí</i></h3>
               <p>
-                Somos uma igreja em células apaixonada pela nossa cidade. Cuidamos das pessoas onde elas estão — nas casas, nos bairros, escolas e locais de trabalho.
+                Somos uma igreja em células apaixonada pela nossa cidade. Cuidamos das pessoas onde elas estão, nas casas, nos bairros, escolas e locais de trabalho, sendo canal de bênção para toda a comunidade.
               </p>
+              <div class="why-card-verse">
+                <blockquote>“Busquem a paz da cidade para onde os enviei e orem ao Senhor por ela.”</blockquote>
+                <cite>Jeremias 29:7</cite>
+              </div>
             </div>
           </div>
         </div>
@@ -263,17 +294,27 @@
         <div class="ministries-grid">
           <!-- Espaço Kids -->
           <article class="ministry-card">
-            <div class="ministry-image-wrap">
-              <img src="assets/kids.jpg" alt="Crianças no Espaço Kids">
+            <div class="ministry-image-wrap kids-slider" aria-label="Fotos do Espaço Kids">
+              <div class="kids-slides">
+                <img src="assets/kids 1.jpg" alt="Crianças no Espaço Kids IEC" class="kids-slide active">
+                <img src="assets/kids 2.jpg" alt="Atividades e brincadeiras no Espaço Kids IEC" class="kids-slide">
+              </div>
               <span class="ministry-badge badge-kids">ESPAÇO KIDS • CRIANÇAS</span>
+              <div class="slider-dots" aria-hidden="true">
+                <span class="slider-dot active"></span>
+                <span class="slider-dot"></span>
+              </div>
             </div>
             <div class="ministry-body">
               <h3>Espaço Kids</h3>
               <p>
-                Os pequenos têm um ambiente seguro, alegre e dinâmico feito sob medida para eles. Nossos voluntários cuidam com carinho enquanto as crianças aprendem os passos de Jesus com histórias, brincadeiras e muito amor.
+                Os pequenos têm um ambiente seguro, alegre e dinâmico feito sob medida para eles. Nossos voluntários
+                cuidam com carinho enquanto as crianças aprendem os passos de Jesus com histórias, brincadeiras e muito
+                amor.
               </p>
-              <a href="https://wa.me/5511947022350?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Espa%C3%A7o%20Kids%2C%20o%20minist%C3%A9rio%20de%20crian%C3%A7as%20da%20IEC." target="_blank" rel="noopener" class="btn btn-terracotta">
-                Conhecer o Espaço Kids ↗
+              <a href="https://wa.me/5511947022350?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Espa%C3%A7o%20Kids%2C%20o%20minist%C3%A9rio%20de%20crian%C3%A7as%20da%20IEC."
+                target="_blank" rel="noopener" class="btn btn-terracotta">
+                Conhecer o Espaço Kids
               </a>
             </div>
           </article>
@@ -281,16 +322,18 @@
           <!-- Ministério Flow -->
           <article class="ministry-card">
             <div class="ministry-image-wrap">
-              <img src="assets/youth.jpg" alt="Jovens do Ministério Flow">
+              <img src="assets/Jovens 1.jpg" alt="Jovens do Ministério Flow IEC" class="flow-img">
               <span class="ministry-badge badge-flow">FLOW • JOVENS &amp; TEENS</span>
             </div>
             <div class="ministry-body">
               <h3>Ministério Flow</h3>
               <p>
-                Um espaço autêntico para jovens caminharem juntos na fé. Encontros vibrantes, adoração profunda e conexões que duram para sempre. Se você quer viver um propósito real em Jesus, seu lugar é no Flow!
+                Um espaço autêntico para jovens caminharem juntos na fé. Encontros vibrantes, adoração profunda e
+                conexões que duram para sempre. Se você quer viver um propósito real em Jesus, seu lugar é no Flow!
               </p>
-              <a href="https://wa.me/5511947022350?text=Ol%C3%A1!%20Quero%20conhecer%20o%20Minist%C3%A9rio%20Flow%2C%20o%20minist%C3%A9rio%20de%20jovens%20da%20IEC." target="_blank" rel="noopener" class="btn btn-sand">
-                Quero conhecer o Flow ↗
+              <a href="https://wa.me/5511947022350?text=Ol%C3%A1!%20Quero%20conhecer%20o%20Minist%C3%A9rio%20Flow%2C%20o%20minist%C3%A9rio%20de%20jovens%20da%20IEC."
+                target="_blank" rel="noopener" class="btn btn-sand">
+                Quero conhecer o Flow
               </a>
             </div>
           </article>
@@ -370,7 +413,8 @@
 
         <div class="pastor-contact-bar">
           Quer conversar ou receber aconselhamento com a nossa equipe pastoral?
-          <a href="https://wa.me/5511947022350?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20com%20a%20equipe%20pastoral%20da%20IEC." target="_blank" rel="noopener">Fale com a IEC no WhatsApp ↗</a>
+          <a href="https://wa.me/5511947022350?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20com%20a%20equipe%20pastoral%20da%20IEC."
+            target="_blank" rel="noopener">Fale com a IEC no WhatsApp</a>
         </div>
       </div>
     </section>
@@ -390,30 +434,37 @@
           <!-- YouTube Card -->
           <div class="media-card media-youtube">
             <div>
-              <span class="media-platform-tag">▶ &nbsp; IEC JUNDIAÍ NO YOUTUBE</span>
-              <div class="play-circle">▶</div>
+              <span class="media-platform-tag media-tag-youtube">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                IEC JUNDIAÍ NO YOUTUBE
+              </span>
+              <div class="play-circle play-circle-youtube" aria-label="Assistir mensagens no YouTube">▶</div>
               <h3 class="media-title">Uma mensagem para acompanhar seus dias</h3>
               <p class="media-desc">
                 Cultos completos gravados, séries de mensagens e pregações que edificam e direcionam sua fé.
               </p>
             </div>
-            <a href="https://www.youtube.com/@iecjundiai" target="_blank" rel="noopener" class="btn btn-terracotta">
-              Explorar Vídeos no YouTube ↗
+            <a href="https://www.youtube.com/@iecjundiai" target="_blank" rel="noopener" class="btn btn-youtube">
+              Explorar Vídeos no YouTube
             </a>
           </div>
 
           <!-- Spotify Card -->
           <div class="media-card media-spotify">
             <div>
-              <span class="media-platform-tag">◉ &nbsp; NOSSO SPOTIFY</span>
-              <div class="play-circle" style="background-color: var(--sand);">♫</div>
+              <span class="media-platform-tag media-tag-spotify">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.495 17.307c-.216.353-.674.464-1.027.248-2.812-1.718-6.352-2.107-10.52-1.155-.403.092-.806-.16-.898-.563-.092-.403.16-.806.563-.898 4.568-1.044 8.483-.604 11.634 1.341.353.216.464.674.248 1.027zm1.467-3.262c-.272.441-.849.58-1.29.308-3.218-1.978-8.125-2.55-11.932-1.394-.497.151-1.024-.135-1.175-.632-.151-.497.135-1.024.632-1.175 4.356-1.321 9.771-.682 13.457 1.58.441.272.58.849.308 1.293zm.126-3.41c-3.859-2.292-10.23-2.503-13.91-1.385-.591.179-1.222-.156-1.401-.747-.179-.591.156-1.222.747-1.401 4.238-1.286 11.276-1.037 15.719 1.599.531.316.705 1.006.389 1.537-.316.531-1.006.705-1.537.389z"/></svg>
+                NOSSO SPOTIFY
+              </span>
+              <div class="play-circle play-circle-spotify" aria-label="Ouvir louvores no Spotify">▶</div>
               <h3 class="media-title">Dê o play na adoração</h3>
               <p class="media-desc">
                 Ouça as playlists oficiais de louvor da IEC para orar, trabalhar e se conectar com Deus.
               </p>
             </div>
-            <a href="https://open.spotify.com/user/jk63sc3jsyntrsqa5o5rt9zqu?si=ba2341ba251844c3" target="_blank" rel="noopener" class="btn btn-outline-white">
-              Ouvir no Spotify ↗
+            <a href="https://open.spotify.com/user/jk63sc3jsyntrsqa5o5rt9zqu?si=ba2341ba251844c3" target="_blank"
+              rel="noopener" class="btn btn-spotify">
+              Ouvir no Spotify
             </a>
           </div>
         </div>
@@ -429,18 +480,19 @@
           <h2><i class="script">Fique Conectado</i></h2>
           <h3>NA ESPAÇO CRISTÃO</h3>
           <p>
-            O próximo encontro pode ser o seu! Venha viver esse momento em família. 
+            O próximo encontro pode ser o seu! Venha viver esse momento em família.
             Escolha um culto e, se desejar, avise a nossa equipe de recepção antes de chegar.
           </p>
 
           <div class="visit-address-card">
             <strong>ESPAÇO CRISTÃO • JUNDIAÍ</strong>
             <p>
-              Rua Moreira César, 208 — Vila Arens • Jundiaí, SP<br>
+              Rua Moreira César, 208, Vila Arens • Jundiaí, SP<br>
               Domingos às 09h30 e às 19h00
             </p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Igreja+Espa%C3%A7o+Crist%C3%A3o+Rua+Moreira+C%C3%A9sar+208+Jundia%C3%AD" target="_blank" rel="noopener" class="btn btn-outline">
-              Abrir rota no Google Maps ↗
+            <a href="https://www.google.com/maps/search/?api=1&query=Igreja+Espa%C3%A7o+Crist%C3%A3o+Rua+Moreira+C%C3%A9sar+208+Jundia%C3%AD"
+              target="_blank" rel="noopener" class="btn btn-outline">
+              Abrir rota no Google Maps
             </a>
           </div>
 
@@ -448,15 +500,18 @@
           <div class="faq-list">
             <details class="faq-item">
               <summary class="faq-summary">Preciso avisar antes de ir?</summary>
-              <p>Não precisa! As portas estão sempre abertas para receber você e sua família. Mas se quiser tirar dúvidas antes, estamos no WhatsApp.</p>
+              <p>Não precisa! As portas estão sempre abertas para receber você e sua família. Mas se quiser tirar
+                dúvidas antes, estamos no WhatsApp.</p>
             </details>
             <details class="faq-item">
               <summary class="faq-summary">Como encontro uma célula?</summary>
-              <p>Nossa equipe conecta você a uma célula próxima da sua casa ou trabalho. Basta mandar uma mensagem pelo WhatsApp!</p>
+              <p>Nossa equipe conecta você a uma célula próxima da sua casa ou trabalho. Basta mandar uma mensagem pelo
+                WhatsApp!</p>
             </details>
             <details class="faq-item">
               <summary class="faq-summary">Tem programação para as crianças?</summary>
-              <p>Sim! Durante os cultos de domingo acontece o Espaço Kids com professores dedicados e salas seguras por faixa etária.</p>
+              <p>Sim! Durante os cultos de domingo acontece o Espaço Kids com professores dedicados e salas seguras por
+                faixa etária.</p>
             </details>
           </div>
         </div>
@@ -464,18 +519,18 @@
         <div class="visit-box">
           <h4>Sua Primeira Vez na IEC?</h4>
           <p>Será uma honra receber você. Escolha um horário para combinar sua visita com nossa equipe:</p>
-          
+
           <form id="visitform">
             <div class="form-group">
               <label for="serviceSelect" class="form-label">QUAL HORÁRIO COMBINA COM VOCÊ?</label>
               <select id="serviceSelect" class="form-select">
-                <option value="Domingo às 09h30 (Culto da Manhã)">Domingo às 09h30 — Culto da Manhã</option>
-                <option value="Domingo às 19h00 (Culto da Noite)">Domingo às 19h00 — Culto da Noite</option>
+                <option value="Domingo às 09h30 (Culto da Manhã)">Domingo às 09h30 • Culto da Manhã</option>
+                <option value="Domingo às 19h00 (Culto da Noite)">Domingo às 19h00 • Culto da Noite</option>
               </select>
             </div>
-            
+
             <button type="submit" class="btn btn-terracotta">
-              Combinar Minha Visita no WhatsApp ↗
+              Combinar Minha Visita no WhatsApp
             </button>
             <span class="form-disclaimer">
               Você será direcionado diretamente ao WhatsApp da IEC. Sua visita não depende de inscrição.
@@ -521,10 +576,11 @@
         </a>
 
         <div class="footer-social-links">
-          <a href="https://www.instagram.com/iecjundiai/" target="_blank" rel="noopener">Instagram ↗</a>
-          <a href="https://www.youtube.com/@iecjundiai" target="_blank" rel="noopener">YouTube ↗</a>
-          <a href="https://open.spotify.com/user/jk63sc3jsyntrsqa5o5rt9zqu?si=ba2341ba251844c3" target="_blank" rel="noopener">Spotify ↗</a>
-          <a href="https://www.facebook.com/iec1999" target="_blank" rel="noopener">Facebook ↗</a>
+          <a href="https://www.instagram.com/iecjundiai/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.youtube.com/@iecjundiai" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://open.spotify.com/user/jk63sc3jsyntrsqa5o5rt9zqu?si=ba2341ba251844c3" target="_blank"
+            rel="noopener">Spotify</a>
+          <a href="https://www.facebook.com/iec1999" target="_blank" rel="noopener">Facebook</a>
         </div>
       </div>
 
@@ -539,12 +595,15 @@
   </footer>
 
   <!-- Botão Flutuante de WhatsApp -->
-  <a href="https://wa.me/5511947022350?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20com%20a%20equipe%20da%20Igreja%20Espa%C3%A7o%20Crist%C3%A3o." target="_blank" rel="noopener" class="floating-whatsapp" aria-label="Fale conosco no WhatsApp">
+  <a href="https://wa.me/5511947022350?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20com%20a%20equipe%20da%20Igreja%20Espa%C3%A7o%20Crist%C3%A3o."
+    target="_blank" rel="noopener" class="floating-whatsapp" aria-label="Fale conosco no WhatsApp">
     <svg viewBox="0 0 24 24">
-      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.52 0-3-.4-4.31-1.16l-.31-.18-3.2.84.85-3.12-.2-.32a8.19 8.19 0 0 1-1.26-4.3c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.4 3.61 2.4 5.8 0 4.52-3.68 8.2-8.18 8.2zm4.49-6.14c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.66 4.21 3.73.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/>
+      <path
+        d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.52 0-3-.4-4.31-1.16l-.31-.18-3.2.84.85-3.12-.2-.32a8.19 8.19 0 0 1-1.26-4.3c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.4 3.61 2.4 5.8 0 4.52-3.68 8.2-8.18 8.2zm4.49-6.14c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.66 4.21 3.73.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z" />
     </svg>
   </a>
 
   <script src="script.js"></script>
 </body>
+
 </html>

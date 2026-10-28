@@ -69,5 +69,86 @@ document.addEventListener('DOMContentLoaded', () => {
       tickerPauseBtn.setAttribute('aria-label', isPaused ? 'Continuar animação' : 'Pausar animação');
     });
   }
+
+  // 6. Transição contínua das imagens do Espaço Kids (kids 1 e kids 2)
+  const kidsSlides = document.querySelectorAll('.kids-slide');
+  const kidsDots = document.querySelectorAll('.slider-dot');
+  if (kidsSlides.length > 1) {
+    let currentSlide = 0;
+    const totalSlides = kidsSlides.length;
+
+    const showSlide = (index) => {
+      kidsSlides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      kidsDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+      currentSlide = index;
+    };
+
+    let sliderInterval = setInterval(() => {
+      showSlide((currentSlide + 1) % totalSlides);
+    }, 3800);
+
+    kidsDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        clearInterval(sliderInterval);
+        showSlide(index);
+        sliderInterval = setInterval(() => {
+          showSlide((currentSlide + 1) % totalSlides);
+        }, 3800);
+      });
+    });
+  }
+
+  // 7. Vídeo Hero com controle de som
+  const heroVideo = document.getElementById('heroVideo');
+  const heroAudioBtn = document.getElementById('heroVideoAudioBtn');
+  const heroAudioText = document.getElementById('heroAudioText');
+  const heroAudioIcon = document.getElementById('heroAudioIcon');
+
+  if (heroVideo && heroAudioBtn) {
+    // Garante que o vídeo reproduza sem problemas em navegadores com restrições de autoplay
+    const tryPlay = () => {
+      heroVideo.play().catch(() => {});
+    };
+    tryPlay();
+    document.addEventListener('touchstart', tryPlay, { once: true });
+    document.addEventListener('click', tryPlay, { once: true });
+
+    heroAudioBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (heroVideo.muted) {
+        heroVideo.muted = false;
+        heroVideo.volume = 0.9;
+        heroVideo.play();
+        if (heroAudioText) heroAudioText.textContent = 'Som Ativo';
+        if (heroAudioIcon) {
+          heroAudioIcon.innerHTML = `
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+          `;
+        }
+        heroAudioBtn.classList.add('unmuted');
+        heroAudioBtn.setAttribute('aria-label', 'Desativar som do vídeo');
+        heroAudioBtn.setAttribute('title', 'Desativar som');
+      } else {
+        heroVideo.muted = true;
+        if (heroAudioText) heroAudioText.textContent = 'Ativar Som';
+        if (heroAudioIcon) {
+          heroAudioIcon.innerHTML = `
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+            </svg>
+          `;
+        }
+        heroAudioBtn.classList.remove('unmuted');
+        heroAudioBtn.setAttribute('aria-label', 'Ativar som do vídeo');
+        heroAudioBtn.setAttribute('title', 'Ativar som');
+      }
+    });
+  }
 });
 

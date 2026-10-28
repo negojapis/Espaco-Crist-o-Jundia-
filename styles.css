@@ -214,22 +214,21 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 }
 
 .brand-icon {
-  width: 44px;
-  height: 44px;
-  background-color: var(--white);
-  border-radius: 8px;
-  padding: 4px;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: none;
+  transition: transform 0.25s ease;
 }
 
 .brand-link:hover .brand-icon {
   transform: scale(1.06);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 .brand-icon svg,
@@ -264,6 +263,7 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 .brand-text {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .brand-title {
@@ -443,9 +443,7 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 }
 
 .hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: block;
   font-family: var(--font-heading);
   font-size: clamp(10.5px, 0.85vw, 12px);
   font-weight: 700;
@@ -529,18 +527,78 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   box-shadow: var(--shadow-arch);
   border: clamp(6px, 0.8vw, 10px) solid var(--white);
   position: relative;
-  background-color: #ddd;
+  background-color: #111;
 }
 
-.hero-arch-frame img {
+.hero-arch-frame img,
+.hero-arch-frame video,
+.hero-arch-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.8s ease;
 }
 
-.hero-arch-frame:hover img {
-  transform: scale(1.04);
+.hero-arch-frame:hover img,
+.hero-arch-frame:hover .hero-arch-video {
+  transform: scale(1.03);
+}
+
+/* Botão de Áudio no Card do Vídeo */
+.hero-video-audio-btn {
+  position: absolute;
+  bottom: clamp(14px, 2vh, 22px);
+  right: clamp(14px, 1.8vw, 22px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(18, 22, 28, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+
+.hero-video-audio-btn:hover {
+  background: var(--iec-orange);
+  border-color: var(--iec-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(231, 95, 0, 0.45);
+}
+
+.hero-video-audio-btn.unmuted {
+  background: var(--iec-orange);
+  border-color: var(--iec-orange);
+}
+
+.hero-audio-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-audio-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.hero-video-audio-btn:hover .hero-audio-icon svg {
+  transform: scale(1.12);
 }
 
 /* Badge de Localização / Somos Um na base do Arco */
@@ -589,7 +647,7 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   height: auto;
   z-index: 4;
   pointer-events: none;
-  filter: drop-shadow(0 8px 24px rgba(231, 95, 0, 0.28));
+  filter: none;
   transform: rotate(6deg);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -996,6 +1054,35 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   font-size: 15px;
   color: var(--muted);
   line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.why-card-verse {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(129, 155, 172, 0.35);
+}
+
+.why-card-verse blockquote {
+  font-size: 13.5px;
+  font-style: italic;
+  color: var(--charcoal);
+  line-height: 1.6;
+  margin: 0 0 8px 0;
+  padding-left: 12px;
+  border-left: 2.5px solid var(--iec-orange);
+}
+
+.why-card-verse cite {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--iec-orange);
+  font-style: normal;
+  padding-left: 14px;
 }
 
 /* ==========================================================================
@@ -1077,6 +1164,68 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 
 .ministry-card:hover .ministry-image-wrap img {
   transform: scale(1.05);
+}
+
+.ministry-image-wrap .flow-img {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* Slider de Imagens Espaço Kids */
+.kids-slides {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.kids-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  pointer-events: none;
+}
+
+.kids-slide.active {
+  opacity: 1;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.ministry-card:hover .kids-slide.active {
+  transform: scale(1.06);
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 3;
+}
+
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.slider-dot.active {
+  background-color: var(--white);
+  width: 22px;
+  border-radius: 4px;
 }
 
 .ministry-badge {
@@ -1260,21 +1409,39 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 }
 
 .media-youtube {
-  background: linear-gradient(135deg, var(--charcoal) 0%, var(--iec-blue-deep) 100%);
+  background: radial-gradient(circle at 90% 10%, rgba(255, 0, 0, 0.16), transparent 55%),
+              linear-gradient(135deg, #1c2227 0%, #101518 100%);
+  border: 1px solid rgba(255, 0, 0, 0.2);
 }
 
 .media-spotify {
-  background: linear-gradient(135deg, var(--iec-blue-deep) 0%, var(--iec-blue-dark) 100%);
+  background: radial-gradient(circle at 90% 10%, rgba(29, 185, 84, 0.18), transparent 55%),
+              linear-gradient(135deg, #15241b 0%, #0d1612 100%);
+  border: 1px solid rgba(29, 185, 84, 0.25);
 }
 
 .media-platform-tag {
   font-family: var(--font-heading);
-  font-size: 11px;
+  font-size: 11.5px;
+  font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--iec-blue-light);
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 24px;
+}
+
+.media-platform-tag svg {
+  flex-shrink: 0;
+}
+
+.media-tag-youtube {
+  color: #ff4444;
+}
+
+.media-tag-spotify {
+  color: #1ed760;
 }
 
 .media-title {
@@ -1297,18 +1464,59 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  background: var(--iec-orange);
   color: var(--white);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 24px;
+  padding-left: 3px;
   margin-bottom: 30px;
-  box-shadow: 0 8px 24px var(--iec-orange-glow);
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.play-circle-youtube {
+  background: #FF0000;
+  box-shadow: 0 8px 24px rgba(255, 0, 0, 0.35);
+}
+
+.play-circle-spotify {
+  background: #1DB954;
+  box-shadow: 0 8px 24px rgba(29, 185, 84, 0.35);
 }
 
 .media-card:hover .play-circle {
   transform: scale(1.1);
+}
+
+.btn-youtube {
+  background-color: #FF0000;
+  color: var(--white);
+  border: 1px solid #FF0000;
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.25);
+}
+
+.btn-youtube:hover {
+  background-color: #E60000;
+  border-color: #E60000;
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+}
+
+.btn-spotify {
+  background-color: #1DB954;
+  color: #000000;
+  font-weight: 700;
+  border: 1px solid #1DB954;
+  box-shadow: 0 4px 14px rgba(29, 185, 84, 0.25);
+}
+
+.btn-spotify:hover {
+  background-color: #1ED760;
+  border-color: #1ED760;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29, 185, 84, 0.4);
 }
 
 /* ==========================================================================
@@ -1646,8 +1854,8 @@ details[open] .faq-summary::after {
   }
 
   .brand-icon {
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
   }
 
   .brand-title {
@@ -1848,8 +2056,8 @@ details[open] .faq-summary::after {
   }
 
   .brand-icon {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
   }
 
   .brand-title {
@@ -1898,6 +2106,13 @@ details[open] .faq-summary::after {
     height: 350px;
     border-width: 6px;
     border-radius: 170px 170px 16px 16px;
+  }
+
+  .hero-video-audio-btn {
+    bottom: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    font-size: 10.5px;
   }
 
   .hero-map-badge {
