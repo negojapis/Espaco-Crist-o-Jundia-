@@ -2,7 +2,7 @@
 // IEC • Igreja Espaço Cristão — Scripts Interativos
 // ==========================================================================
 
-document.addEventListener('DOMContentLoaded', () => {
+function initIEC() {
   // 1. Atualizar Ano no Rodapé
   const yearEl = document.getElementById('year');
   if (yearEl) {
@@ -70,39 +70,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Transição contínua das imagens do Espaço Kids (kids 1 e kids 2)
-  const kidsSlides = document.querySelectorAll('.kids-slide');
-  const kidsDots = document.querySelectorAll('.slider-dot');
-  if (kidsSlides.length > 1) {
+  // 6. Transição contínua das imagens no card arqueado da IEC (Muitas histórias. Uma só família.)
+  const sageSlides = document.querySelectorAll('.sage-slide');
+  const sageDotsContainer = document.querySelector('.sage-slider-dots');
+  if (sageSlides.length > 1) {
     let currentSlide = 0;
-    const totalSlides = kidsSlides.length;
+    const totalSlides = sageSlides.length;
+
+    if (sageDotsContainer) {
+      sageDotsContainer.innerHTML = '';
+      sageSlides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = `slider-dot${i === 0 ? ' active' : ''}`;
+        dot.setAttribute('aria-label', `Ir para foto ${i + 1} de ${totalSlides}`);
+        dot.addEventListener('click', () => {
+          clearInterval(sliderInterval);
+          showSlide(i);
+          startInterval();
+        });
+        sageDotsContainer.appendChild(dot);
+      });
+    }
+
+    const sageDots = sageDotsContainer ? sageDotsContainer.querySelectorAll('.slider-dot') : [];
 
     const showSlide = (index) => {
-      kidsSlides.forEach((slide, i) => {
+      sageSlides.forEach((slide, i) => {
         slide.classList.toggle('active', i === index);
       });
-      kidsDots.forEach((dot, i) => {
+      sageDots.forEach((dot, i) => {
         dot.classList.toggle('active', i === index);
       });
       currentSlide = index;
     };
 
-    let sliderInterval = setInterval(() => {
-      showSlide((currentSlide + 1) % totalSlides);
-    }, 3800);
+    let sliderInterval;
+    const startInterval = () => {
+      sliderInterval = setInterval(() => {
+        showSlide((currentSlide + 1) % totalSlides);
+      }, 3500);
+    };
 
-    kidsDots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        clearInterval(sliderInterval);
-        showSlide(index);
-        sliderInterval = setInterval(() => {
-          showSlide((currentSlide + 1) % totalSlides);
-        }, 3800);
-      });
-    });
+    startInterval();
   }
-
-  // 7. Vídeo Hero com controle de som
   const heroVideo = document.getElementById('heroVideo');
   const heroAudioBtn = document.getElementById('heroVideoAudioBtn');
   const heroAudioText = document.getElementById('heroAudioText');
@@ -150,5 +161,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initIEC);
+} else {
+  initIEC();
+}
 

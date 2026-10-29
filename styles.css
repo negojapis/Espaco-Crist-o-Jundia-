@@ -209,13 +209,13 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 .brand-link {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 4px;
   color: var(--white);
 }
 
 .brand-icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 52px;
   background: transparent;
   border-radius: 0;
   padding: 0;
@@ -228,7 +228,7 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 }
 
 .brand-link:hover .brand-icon {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .brand-icon svg,
@@ -240,25 +240,6 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   display: block;
 }
 
-.sage-icon {
-  width: 60px;
-  height: 60px;
-  background-color: var(--white);
-  border-radius: 12px;
-  padding: 6px;
-  margin: 0 auto 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-}
-
-.sage-favicon-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
 
 .brand-text {
   display: flex;
@@ -268,18 +249,18 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 
 .brand-title {
   font-family: var(--font-heading);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 800;
   letter-spacing: -0.5px;
-  line-height: 1;
+  line-height: 0.95;
 }
 
 .brand-subtitle {
-  font-size: 9.5px;
-  letter-spacing: 1.8px;
+  font-size: 10px;
+  letter-spacing: 2.2px;
   text-transform: uppercase;
-  opacity: 0.9;
-  font-weight: 500;
+  opacity: 0.95;
+  font-weight: 600;
   margin-top: 3px;
 }
 
@@ -760,16 +741,22 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 }
 
 .sage-icon {
-  width: 60px;
-  height: 60px;
-  background-color: var(--white);
-  border-radius: 12px;
-  padding: 6px;
-  margin: 0 auto 24px;
+  width: 68px;
+  height: 90px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin: 0 auto 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.22));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sage-icon:hover {
+  transform: scale(1.08);
 }
 
 .sage-icon img,
@@ -813,12 +800,78 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   overflow: hidden;
   border: 8px solid rgba(255, 255, 255, 0.25);
   box-shadow: var(--shadow-lg);
+  position: relative;
 }
 
-.sage-image-arch img {
+.sage-slides {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sage-slide {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.8s ease-in-out, transform 1s ease-out;
+  pointer-events: none;
+}
+
+.sage-slide.pos-top {
+  object-position: center 20%;
+}
+
+.sage-slide.active {
+  opacity: 1;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.sage-slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 4;
+  max-width: 90%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  display: flex;
+  align-items: center;
+}
+
+.sage-slider-dots::-webkit-scrollbar {
+  display: none;
+}
+
+.sage-slider-dots .slider-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.sage-slider-dots .slider-dot.active {
+  background-color: #ffffff;
+  width: 16px;
+  border-radius: 4px;
 }
 
 .sage-image-caption {
@@ -1034,6 +1087,18 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   transform: scale(1.05);
 }
 
+.why-card-img img.why-img-acolhimento {
+  object-position: center 20%;
+}
+
+.why-card-img img.why-img-circulo {
+  object-position: center 55%;
+}
+
+.why-card-img img.why-img-adoracao {
+  object-position: center 30%;
+}
+
 .why-card-body {
   padding: 36px 32px 40px;
   flex: 1;
@@ -1171,34 +1236,44 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   object-position: center 30%;
 }
 
-/* Slider de Imagens Espaço Kids */
-.kids-slides {
+.ministry-image-wrap .kids-img {
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Slider de Imagens Ministério Flow */
+.flow-slides {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
 
-.kids-slide {
+.flow-slide {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
   opacity: 0;
   z-index: 1;
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transition: opacity 0.8s ease-in-out, transform 1s ease-out;
   pointer-events: none;
 }
 
-.kids-slide.active {
+.flow-slide.pos-top {
+  object-position: center 18%;
+}
+
+.flow-slide.active {
   opacity: 1;
   z-index: 2;
   pointer-events: auto;
 }
 
-.ministry-card:hover .kids-slide.active {
-  transform: scale(1.06);
+.ministry-card:hover .flow-slide.active {
+  transform: scale(1.05);
 }
 
 .slider-dots {
@@ -1211,6 +1286,24 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   z-index: 3;
 }
 
+.flow-slider-dots {
+  bottom: 16px;
+  right: 16px;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  max-width: calc(100% - 190px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.flow-slider-dots::-webkit-scrollbar {
+  display: none;
+}
+
 .slider-dot {
   width: 8px;
   height: 8px;
@@ -1220,12 +1313,24 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  border: none;
+  padding: 0;
 }
 
 .slider-dot.active {
   background-color: var(--white);
   width: 22px;
   border-radius: 4px;
+}
+
+.flow-slider-dots .slider-dot {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+}
+
+.flow-slider-dots .slider-dot.active {
+  width: 14px;
 }
 
 .ministry-badge {
@@ -2056,12 +2161,12 @@ details[open] .faq-summary::after {
   }
 
   .brand-icon {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 44px;
   }
 
   .brand-title {
-    font-size: 19px;
+    font-size: 22px;
   }
 
   .brand-subtitle {
