@@ -413,9 +413,9 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.95fr;
+  grid-template-columns: 1.05fr 1.05fr;
   align-items: center;
-  gap: clamp(28px, 4vw, 64px);
+  gap: clamp(28px, 3.5vw, 56px);
 }
 
 .hero-content {
@@ -495,15 +495,15 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 .hero-arch-container {
   position: relative;
   width: 100%;
-  max-width: min(500px, 42vw);
+  max-width: min(620px, 48vw);
 }
 
 .hero-arch-frame {
   width: 100%;
-  height: clamp(340px, 50vh, 560px);
-  max-height: calc(100svh - var(--header-height) - var(--ticker-height) - 60px);
+  height: clamp(440px, 66vh, 680px);
+  max-height: calc(100svh - var(--header-height) - var(--ticker-height) - 32px);
   aspect-ratio: 4 / 5;
-  border-radius: clamp(140px, 20vw, 340px) clamp(140px, 20vw, 340px) 24px 24px;
+  border-radius: 999px 999px 28px 28px;
   overflow: hidden;
   box-shadow: var(--shadow-arch);
   border: clamp(6px, 0.8vw, 10px) solid var(--white);
@@ -622,19 +622,19 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 
 .hero-decor-somos-um {
   position: absolute;
-  top: clamp(-45px, -5vh, -30px);
-  right: clamp(-25px, -2vw, -10px);
-  width: clamp(140px, 13vw, 200px);
+  bottom: clamp(10px, 2vh, 22px);
+  left: clamp(-32px, -2.5vw, -16px);
+  width: clamp(130px, 12vw, 185px);
   height: auto;
   z-index: 4;
   pointer-events: none;
-  filter: none;
-  transform: rotate(6deg);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
+  transform: rotate(-6deg);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-visual:hover .hero-decor-somos-um {
-  transform: rotate(2deg) scale(1.06);
+  transform: rotate(-2deg) scale(1.06);
 }
 
 /* ==========================================================================
@@ -2002,12 +2002,12 @@ details[open] .faq-summary::after {
   }
 
   .hero-arch-container {
-    max-width: min(440px, 38vw);
+    max-width: min(540px, 45vw);
   }
 
   .hero-arch-frame {
-    height: clamp(280px, 45vh, 400px);
-    max-height: calc(100svh - var(--header-height) - var(--ticker-height) - 40px);
+    height: clamp(380px, 62vh, 540px);
+    max-height: calc(100svh - var(--header-height) - var(--ticker-height) - 24px);
   }
 
   .hero-map-badge {
@@ -2026,9 +2026,9 @@ details[open] .faq-summary::after {
   }
 
   .hero-decor-somos-um {
-    width: 140px;
-    top: -30px;
-    right: -15px;
+    width: 135px;
+    bottom: 10px;
+    left: -18px;
   }
 }
 
@@ -2122,9 +2122,9 @@ details[open] .faq-summary::after {
   }
 
   .hero-decor-somos-um {
-    width: clamp(120px, 20vw, 160px);
-    top: -28px;
-    right: 0;
+    width: clamp(115px, 20vw, 155px);
+    bottom: 12px;
+    left: 8px;
   }
 
   .sage-grid,
